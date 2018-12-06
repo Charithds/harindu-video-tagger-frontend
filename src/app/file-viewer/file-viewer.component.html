@@ -1,0 +1,6 @@
+<h2>My Videos</h2>
+<ul class="list-group">
+  <li *ngFor="let video of videos" class="list-group-item">
+    <span class="badge">{{video.id}}</span> {{video.name}}
+  </li>
+</ul>
