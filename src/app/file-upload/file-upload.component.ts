@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-import {saveAs} from 'file-saver';
+
+const URL = 'http://localhost:3000/api/upload/';
 
 @Component({
   selector: 'app-file-upload',
@@ -9,32 +10,20 @@ import {saveAs} from 'file-saver';
 })
 export class FileUploadComponent implements OnInit {
 
-  public file:File;
-  private save_location = "./uploads/"
+  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'video-file'});
   
   constructor() { }
 
-  saveFile(){
-    console.log("in here"+this.file);
-    let fileReader = new FileReader();
-    fileReader.onload = (event) => {
-      var blob = new Blob(fileReader.result, {type: this.file.type});
-      saveAs(blob, this.save_location+this.file.name);
-      // writeFile(this.save_location+this.file.name, fileReader.result, function(err){
-      //   if(err){
-      //     return console.log(err);
-      //   }
-      // });
-    }
-    fileReader.readAsArrayBuffer(this.file);
-    console.log("done");
-  }
-
-  fileChanged(event) {
-    this.file = event.target.files[0];
-    console.log(this.file);
-  }
-
   ngOnInit() {
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('File uploaded:', item, status, response);
+      if(status == 200){
+        alert("File Upload Successful.");
+      }else{
+        alert("File Upload Failed. Error code: "+status);
+      }
+     };
   }
+
 }

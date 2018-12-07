@@ -1,6 +1,8 @@
 <h2>My Videos</h2>
-<ul class="list-group">
-  <li *ngFor="let video of videos" class="list-group-item">
-    <span class="badge">{{video.id}}</span> {{video.name}}
-  </li>
+<ul id="videos-list" class="list-group-flush">
+  <a href="#" *ngFor="let video of videos" class="list-group-item list-group-item-action" 
+    [ngClass]="{'active': selectedItem == video}"
+    (mouseover)="onItemHover(video.id)">
+      <span class="badge">{{video.id}}</span> {{video.name}}
+  </a>
 </ul>

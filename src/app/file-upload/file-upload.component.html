@@ -3,14 +3,15 @@
 		<h2>File Uploads</h2>
 		<div class="input-group mb-3">	
 			<div class="custom-file">
-				<input type="file" class="video-file" id="inputGroupFile02" name="video-file"
-					onChange="$('#file-name').html(this.files[0].name);" (change)="fileChanged($event)"/>
+				<input type="file" class="video-file" id="inputGroupFile02" name="video-file" ng2FileSelect [uploader]="uploader"
+					onChange="$('#file-name').html(this.files[0].name);"/>
 				<label class="custom-file-label" id="file-name" for="inputGroupFile02"></label>
 			</div>
 		</div>
 		<button type="button" class="btn btn-success btn-s" 
-			(click)="saveFile()" >
-				Upload an Image
+			(click)="uploader.uploadAll()" 
+			[disabled]="!uploader.getNotUploadedItems().length">
+				Upload
 		</button>
 	</form>
 </div>

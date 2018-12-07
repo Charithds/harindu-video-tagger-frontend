@@ -9,6 +9,7 @@ import { VideoPlaylistService } from '../video-playlist.service';
 })
 export class FileViewerComponent implements OnInit {
   videos: Video[];
+  selectedVideo: Video;
 
   constructor(private videoplaylistService: VideoPlaylistService) { }
 
@@ -21,4 +22,8 @@ export class FileViewerComponent implements OnInit {
     this.getVideos();
   }
 
+  public onItemHover(id){
+    console.log("onItemHover");
+    this.selectedVideo = this.videos[id];
+  }
 }
