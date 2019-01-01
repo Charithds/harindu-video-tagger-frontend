@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Video} from '../video';
 import { VideoPlaylistService } from '../video-playlist.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-file-viewer',
@@ -10,6 +11,7 @@ import { VideoPlaylistService } from '../video-playlist.service';
 export class FileViewerComponent implements OnInit {
   videos: Video[];
   selectedVideo: Video;
+  @Output() videoSelected: EventEmitter<Video> = new EventEmitter<Video>(); 
 
   constructor(private videoplaylistService: VideoPlaylistService) { }
 
@@ -25,5 +27,6 @@ export class FileViewerComponent implements OnInit {
   public onItemHover(id){
     console.log("onItemHover");
     this.selectedVideo = this.videos[id];
+    this.videoSelected.emit(this.selectedVideo);
   }
 }

@@ -7,7 +7,13 @@
             <app-file-upload></app-file-upload>
         </div>
         <div class="col-sm">
-            <app-file-viewer></app-file-viewer>
+            <app-file-viewer (videoSelected)="videoSelectedHandler($event)"></app-file-viewer>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <app-video-player [selectedVideo]="selectedVideo"></app-video-player>
         </div>
     </div>
 </div>

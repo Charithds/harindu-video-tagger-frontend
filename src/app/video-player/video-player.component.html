@@ -1,0 +1,31 @@
+<div *ngIf="selectedVideo" class="row">
+    <div class="col-sm">
+        <div class="row">Content</div>
+        <div class="row">
+            <textarea rows="4" readonly>{{selectedVideo.content}}
+            </textarea>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="row">Title 2</div>
+        <div class="row">
+            <textarea rows="4" readonly>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </textarea>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="row">Title 3</div>
+        <div class="row">
+            <textarea rows="4" readonly>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </textarea>
+        </div>
+    </div>
+</div>
+<p>
+  video-player works!
+</p>
+<vg-player>
+    <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+        <source src="http://localhost:3000/video" type="video/mp4">
+    </video>
+</vg-player>

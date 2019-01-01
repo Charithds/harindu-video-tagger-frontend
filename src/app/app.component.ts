@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Video } from './video';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Video Activity Detection';
+  selectedVideo: Video;
+
+  videoSelectedHandler(selectedVideo:Video) {
+    this.selectedVideo = selectedVideo;
+    console.log(selectedVideo);
+  }
 }
