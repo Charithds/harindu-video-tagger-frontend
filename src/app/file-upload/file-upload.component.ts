@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
-const URL = 'http://localhost:3000/api/upload/';
+const URL = 'http://localhost:8000/api/upload/';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,7 +11,7 @@ const URL = 'http://localhost:3000/api/upload/';
 export class FileUploadComponent implements OnInit {
 
   public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'video-file'});
-  
+
   constructor() { }
 
   ngOnInit() {
